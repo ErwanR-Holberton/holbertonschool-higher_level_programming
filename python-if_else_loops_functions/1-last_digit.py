@@ -2,7 +2,7 @@
 import random
 number = random.randint(-10000, 10000)
 print(f"Last digit of {number} is ", end="")
-if number < 0:
+if number <= 0:
     number = -int(repr(number)[-1])
 else:
     number = int(repr(number)[-1])
