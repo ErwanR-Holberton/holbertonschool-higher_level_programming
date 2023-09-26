@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-def islower(value):
-    if value >= 'a' and value <= 'z':
-        return 1
-    return 0
+def islower(c):
+    if c >= 'a' and c <= 'z':
+        return True
+    return False
