@@ -19,6 +19,8 @@ def roman_to_int(roman_string):
             value = 100
         elif chars == 'D':
             value = 500
+        elif chars == 'M':
+            value = 1000
         if value > sum:
             sum = value - sum
         else:
