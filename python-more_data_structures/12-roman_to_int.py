@@ -5,24 +5,13 @@ def roman_to_int(roman_string):
     if not isinstance(roman_string, str):
         return 0
     sum = 0
-    value = 0
-    for chars in roman_string:
-        if chars == 'I':
-            value = 1
-        elif chars == 'V':
-            value = 5
-        elif chars == 'X':
-            value = 10
-        elif chars == 'L':
-            value = 50
-        elif chars == 'C':
-            value = 100
-        elif chars == 'D':
-            value = 500
-        elif chars == 'M':
-            value = 1000
-        if value > sum:
-            sum = value - sum
+    prev = 0
+    roman_dict = {'I': 1,'V': 5,'X': 10,'L': 50,'C': 100,'D': 500,'M': 1000}
+    for chars in roman_string[::-1]:
+        value = roman_dict.get(chars, 0)
+        if value < prev:
+            sum -= value
         else:
             sum += value
+        prev = value
     return sum
