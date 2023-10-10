@@ -1,17 +1,31 @@
 >>> add_integer = __import__('0-add_integer').add_integer
+
 >>> add_integer(5,0)
 5
+
+>>> add_integer(1)
+99
+
 >>> add_integer(-5,-99)
 -104
+
 >>> add_integer(222333111444222111,222333111444222111)
 444666222888444222
+
 >>> add_integer(222333111444222111222333111444222111222333111444222111222333111444222111,222333111444222111222333111444222111222333111444222111222333111444222111)
 444666222888444222444666222888444222444666222888444222444666222888444222
+
 >>> add_integer(-5,"xdr")
 Traceback (most recent call last):
 TypeError: b must be an integer
+
 >>> add_integer("aze",1)
 Traceback (most recent call last):
 TypeError: a must be an integer
+
 >>> add_integer(-0.15976,1.25385)
 1
+
+>>> add_integer(1,float("inf"))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
