@@ -45,7 +45,6 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
 
-
 def test_positive_int(value, message):
     if not isinstance(value, int):
         raise TypeError(message + " must be an integer")
