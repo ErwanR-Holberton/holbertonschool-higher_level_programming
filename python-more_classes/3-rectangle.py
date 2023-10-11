@@ -39,8 +39,7 @@ class Rectangle:
     def __str__(self):
         if self.__height == 0 or self.__width == 0:
             return ""
-        str = ("#" * self.__width + "\n") * self.__height
-        return str[0:-1]
+        return (("#" * self.__width + "\n") * self.__height)[0:-1]
 
 
 def test_positive_int(value, message):
