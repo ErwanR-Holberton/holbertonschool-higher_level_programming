@@ -28,8 +28,9 @@ class Rectangle:
         test_positive_int(value, "width")
         self.__width = value
 
+
 def test_positive_int(value, message):
-        if not isinstance(value, int):
-            raise TypeError(message + " must be an integer")
-        if value < 0:
-            raise ValueError(message + " must be >= 0")
+    if not isinstance(value, int):
+        raise TypeError(message + " must be an integer")
+    if value < 0:
+        raise ValueError(message + " must be >= 0")
