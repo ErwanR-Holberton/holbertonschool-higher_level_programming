@@ -5,8 +5,14 @@
 class Rectangle:
     """Definition of a rectangle"""
     def __init__(self, width=0, height=0):
-        test_positive_int(width, "width")
-        test_positive_int(height, "height")
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        if width < 0:
+            ValueError("width must be >= 0")
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if height < 0:
+            ValueError("height must be >= 0")
         self.__height = height
         self.__width = width
 
@@ -20,16 +26,16 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        test_positive_int(value, "height")
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value < 0:
+            ValueError("height must be >= 0")
         self.__height = value
 
     @width.setter
     def width(self, value):
-        test_positive_int(value, "width")
-        self.__width = value
-
-def test_positive_int(value, message):
         if not isinstance(value, int):
-            raise TypeError(message + " must be an integer")
+            raise TypeError("width must be an integer")
         if value < 0:
-            ValueError(message + " must be >= 0")
+            ValueError("width must be >= 0")
+        self.__width = value
