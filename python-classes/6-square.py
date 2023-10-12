@@ -66,10 +66,3 @@ class Square:
         for i in range(self.__size):
             print(" " * self.__position[0], end="")
             print("#" * self.__size)
-
-
-def check_size(value):
-    if not isinstance(value, int):
-        raise TypeError("size must be an integer")
-    if value < 0:
-        raise ValueError("size must be >= 0")
