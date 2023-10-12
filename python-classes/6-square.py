@@ -26,7 +26,7 @@ class Square:
     def position(self):
         return (self.position)
 
-    @size.setter
+    @position.setter
     def position(self, value):
         check_tuple(value)
         self.__position = value
