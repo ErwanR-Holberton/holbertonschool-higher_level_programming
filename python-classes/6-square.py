@@ -48,7 +48,7 @@ def check_size(value):
 
 
 def check_tuple(value):
-    if type(value) is not tuple:
+    if not isinstance(value, tuple):
         raise TypeError("position must be a tuple of 2 positive integers")
     if not isinstance(value[0], int):
         raise TypeError("position must be a tuple of 2 positive integers")
