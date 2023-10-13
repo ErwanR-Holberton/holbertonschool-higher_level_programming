@@ -16,7 +16,8 @@ def text_indentation(text):
     for letter in text:
         if flag == 1:
             flag = 0
-            continue
+            if letter == ' ':
+                continue
         print(letter, end="")
         if letter in ".?:":
             print("\n")

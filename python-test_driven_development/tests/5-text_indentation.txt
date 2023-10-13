@@ -20,3 +20,8 @@ o
 hell.
 <BLANKLINE>
 o
+
+>>> text_indentation("hell?o")
+hell?
+<BLANKLINE>
+o
