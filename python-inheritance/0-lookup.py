@@ -3,6 +3,7 @@
 
 
 def lookup(obj):
+    """commentaire pour dire plus de choses"""
     attributes = []
     for i in dir(obj):
         attributes.append(i)
