@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""class using the other class list as a model"""
+
+
 class MyList(list):
+    """addind function to print the sorted list"""
     def print_sorted(self):
         copy = self[:]
         sorted_l = []
@@ -11,5 +15,3 @@ class MyList(list):
             sorted_l.append(copy[min])
             del copy[min]
         print(sorted_l)
-
-
