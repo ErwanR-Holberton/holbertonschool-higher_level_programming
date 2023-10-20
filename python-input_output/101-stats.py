@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""get each line of generator and parse it to print total size and errors"""
 from sys import stdin
 i = 0
 error = {}
