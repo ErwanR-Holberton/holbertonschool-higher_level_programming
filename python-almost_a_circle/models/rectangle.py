@@ -70,9 +70,18 @@ class Rectangle(Base):
                                    + "\n") * self.__height, end="")
 
     def __str__(self):
+        """return shape of rectangle"""
         return ("[{}] ({}) {}/{} - {}/{}".format
                 (self.__class__.__name__, self.id, self.x,
                  self.y, self.__width, self.__height))
+
+    def update(self, *args):
+        """update attributes"""
+        self.id = args[0]
+        self.width(args[1])
+        self.height(args[2])
+        self.x(args[3])
+        self.y(args[4])
 
 
 def is_integer(value, name):
