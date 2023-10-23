@@ -64,6 +64,9 @@ class Rectangle(Base):
         """return area"""
         return self.__height * self.__width
 
+    def display(self):
+        print(("#" * self.__width + "\n") * self.__height, end="")
+
 
 def is_integer(value, name):
     """check if integer"""
