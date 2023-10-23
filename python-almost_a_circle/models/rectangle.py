@@ -7,6 +7,14 @@ class Rectangle(Base):
     """define a class inheriting from Base"""
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
+        is_integer(width, "width")
+        is_above_zero(width, "width")
+        is_integer(height, "height")
+        is_above_zero(height, "height")
+        is_integer(x, "x")
+        above_or_zero(x, "x")
+        is_integer(y, "y")
+        above_or_zero(y, "y")
         self.__width = width
         self.__height = height
         self.__x = x
@@ -30,16 +38,37 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+        is_integer(value, "height")
+        is_above_zero(value, "height")
         self.__height = value
 
     @width.setter
     def width(self, value):
+        is_integer(value, "width")
+        is_above_zero(value, "width")
         self.__width = value
 
     @x.setter
     def x(self, value):
+        is_integer(value, "x")
+        above_or_zero(value, "x")
         self.__x = value
 
     @y.setter
     def y(self, value):
+        is_integer(value, "y")
+        above_or_zero(value, "y")
         self.__y = value
+
+
+def is_integer(value, name):
+    if type(value) is not int:
+        raise TypeError("{} must be an integer".format(name))
+
+def is_above_zero(value, name):
+    if value <= 0:
+        raise ValueError("{} must be > 0".format(name))
+
+def above_or_zero(value, name):
+    if value < 0:
+        raise ValueError("{} must be >= 0".format(name))
