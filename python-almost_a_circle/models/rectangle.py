@@ -62,13 +62,18 @@ class Rectangle(Base):
 
 
 def is_integer(value, name):
+    """check if integer"""
     if type(value) is not int:
         raise TypeError("{} must be an integer".format(name))
 
+
 def is_above_zero(value, name):
+    """checks if is under or equal to zero"""
     if value <= 0:
         raise ValueError("{} must be > 0".format(name))
 
+
 def above_or_zero(value, name):
+    """checks if under zero"""
     if value < 0:
         raise ValueError("{} must be >= 0".format(name))
