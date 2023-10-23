@@ -89,6 +89,7 @@ class Rectangle(Base):
             if len(args) >= 5:
                 self.y = args[4]
 
+
 def is_integer(value, name):
     """check if integer"""
     if type(value) is not int:
