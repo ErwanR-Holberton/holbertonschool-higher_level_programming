@@ -66,7 +66,8 @@ class Rectangle(Base):
 
     def display(self):
         """prints the rectangle"""
-        print(("#" * self.__width + "\n") * self.__height, end="")
+        print(("\n" * self.__y) + ((" " * self.__x) + "#" * self.__width
+                                   + "\n") * self.__height, end="")
 
     def __str__(self):
         return ("[{}] ({}) {}/{} - {}/{}".format
