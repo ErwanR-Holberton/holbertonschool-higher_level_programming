@@ -68,6 +68,11 @@ class Rectangle(Base):
         """prints the rectangle"""
         print(("#" * self.__width + "\n") * self.__height, end="")
 
+    def __str__(self):
+        return ("[{}] ({}) {}/{} - {}/{}".format
+                (self.__class__.__name__, self.id, self.x,
+                 self.y, self.__width, self.__height))
+
 
 def is_integer(value, name):
     """check if integer"""
