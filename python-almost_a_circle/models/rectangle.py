@@ -60,6 +60,9 @@ class Rectangle(Base):
         above_or_zero(value, "y")
         self.__y = value
 
+    def area(self):
+        return self.__height * self.__width
+
 
 def is_integer(value, name):
     """check if integer"""
