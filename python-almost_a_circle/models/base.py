@@ -28,4 +28,4 @@ class Base:
             if list_objs is None:
                 file.write("[]")
             else:
-                file.write(json.dumps([o.to_dictionary() for o in list_objs]))
+                file.write(cls.to_json_string([o.to_dictionary() for o in list_objs]))
