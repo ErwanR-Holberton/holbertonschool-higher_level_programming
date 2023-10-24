@@ -37,3 +37,10 @@ class Base:
         if json_string is None:
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """create an instance with attributes from a dictionnary"""
+        rectangle = cls(1, 1)
+        rectangle.update(**dictionary)
+        return rectangle
