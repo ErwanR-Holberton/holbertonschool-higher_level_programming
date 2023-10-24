@@ -47,3 +47,9 @@ class Base:
             rectangle = cls(1, 1)
         rectangle.update(**dictionary)
         return rectangle
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        with open("{}.json".format(cls.__name__), "r") as file:
+            return [cls.create(a) for a in cls.from_json_string(file.read())]
