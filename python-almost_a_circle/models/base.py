@@ -41,6 +41,9 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """create an instance with attributes from a dictionnary"""
-        rectangle = cls(1, 1)
+        if cls.__name__ == "Square":
+            rectangle = cls(1)
+        if cls.__name__ == "Rectangle":
+            rectangle = cls(1, 1)
         rectangle.update(**dictionary)
         return rectangle
