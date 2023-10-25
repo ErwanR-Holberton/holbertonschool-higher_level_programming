@@ -64,6 +64,12 @@ class Rectangle(Base):
         """return area"""
         return self.__height * self.__width
 
+    def display(self):
+        """prints the rectangle"""
+        print("\n" * self.__y, end="")
+        for i in range(self.__height):
+            print(((" " * self.__x) + "#" * self.__width))
+
     def __str__(self):
         """return shape of rectangle"""
         return ("[{}] ({}) {}/{} - {}/{}".format
