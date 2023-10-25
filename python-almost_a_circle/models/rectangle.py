@@ -75,16 +75,6 @@ class Rectangle(Base):
                 (self.__class__.__name__, self.id, self.x,
                  self.y, self.__width, self.__height))
 
-    def to_dictionary(self):
-        """returns a dictionary"""
-        return {
-            'id': self.id,
-            'width': self.width,
-            'height': self.height,
-            'x': self.x,
-            'y': self.y
-        }
-
 
 def is_integer(value, name):
     """check if integer"""
