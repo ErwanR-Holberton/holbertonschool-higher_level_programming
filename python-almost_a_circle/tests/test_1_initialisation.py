@@ -6,6 +6,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
     def test_base_initialization_id(self):
         b1 = Base()
@@ -31,13 +32,13 @@ class TestBase(unittest.TestCase):
         self.assertEqual(r3.x, 0)
         self.assertEqual(r3.y, 0)
 
-        r4 = Rectangle(3,6,1)
+        r4 = Rectangle(3, 6, 1)
         self.assertEqual(r4.id, 6)
         self.assertEqual(r4.width, 3)
         self.assertEqual(r4.height, 6)
         self.assertEqual(r4.x, 1)
         self.assertEqual(r4.y, 0)
-        r5 = Rectangle(1 ,2, 3, 4, 20)
+        r5 = Rectangle(1, 2, 3, 4, 20)
         self.assertEqual(r5.id, 20)
         self.assertEqual(r5.width, 1)
         self.assertEqual(r5.height, 2)
@@ -60,6 +61,11 @@ class TestBase(unittest.TestCase):
             s1 = Square()
         s1 = Square(3)
         self.assertEqual(s1.id, 12)
+        self.assertEqual(s1.size, 3)
+        s2 = Square(3, 1, 5, 50)
+        self.assertEqual(s2.x, 1)
+        self.assertEqual(s2.y, 5)
+        self.assertEqual(s2.id, 50)
 
 
 if __name__ == '__main__':
