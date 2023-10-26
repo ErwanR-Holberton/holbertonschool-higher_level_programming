@@ -7,7 +7,7 @@ from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestBase(unittest.TestCase):
+class TestAreaGetterSetter(unittest.TestCase):
     def test_rectangle_area_and_setter_getter(self):
         r1 = Rectangle(5, 5, 1, 1)
         self.assertEqual(r1.area(), 25)

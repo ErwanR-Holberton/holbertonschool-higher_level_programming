@@ -7,7 +7,7 @@ from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestBase(unittest.TestCase):
+class TestInit(unittest.TestCase):
     def test_base_initialization_id(self):
         b1 = Base()
         self.assertEqual(b1.id, 1)
