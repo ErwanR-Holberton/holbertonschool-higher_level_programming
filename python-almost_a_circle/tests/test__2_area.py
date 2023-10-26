@@ -81,6 +81,79 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1.y = 3.1
 
+    def test_square_area_and_setter_getter(self):
+        s1 = Square(5, 1, 1)
+        self.assertEqual(s1.area(), 25)
+        s1.size = 2
+        self.assertEqual(s1.width, 2)
+        self.assertEqual(s1.height, 2)
+        self.assertEqual(s1.area(), 4)
+        with self.assertRaises(ValueError):
+            s1.height = 0
+        with self.assertRaises(ValueError):
+            s1.width = 0
+        with self.assertRaises(ValueError):
+            s1.height = -5
+        with self.assertRaises(ValueError):
+            s1.width = -5
+        with self.assertRaises(TypeError):
+            s1.height = "-5"
+        with self.assertRaises(TypeError):
+            s1.width = "-5"
+        with self.assertRaises(TypeError):
+            s1.height = (1, 2)
+        with self.assertRaises(TypeError):
+            s1.width = (1, 2)
+        with self.assertRaises(TypeError):
+            s1.height = [(1)]
+        with self.assertRaises(TypeError):
+            s1.width = [(1)]
+        with self.assertRaises(TypeError):
+            s1.height = {1}
+        with self.assertRaises(TypeError):
+            s1.width = {5}
+        with self.assertRaises(TypeError):
+            s1.height = True
+        with self.assertRaises(TypeError):
+            s1.width = True
+        with self.assertRaises(TypeError):
+            s1.height = 5.2
+        with self.assertRaises(TypeError):
+            s1.width = 3.1
+        s1.x = 0
+        s1.y = 0
+        self.assertEqual(s1.x, 0)
+        self.assertEqual(s1.y, 0)
+        with self.assertRaises(ValueError):
+            s1.x = -5
+        with self.assertRaises(ValueError):
+            s1.y = -5
+        with self.assertRaises(TypeError):
+            s1.x = "-5"
+        with self.assertRaises(TypeError):
+            s1.y = "-5"
+        with self.assertRaises(TypeError):
+            s1.x = (1, 2)
+        with self.assertRaises(TypeError):
+            s1.y = (1, 2)
+        with self.assertRaises(TypeError):
+            s1.x = [(1)]
+        with self.assertRaises(TypeError):
+            s1.y = [(1)]
+        with self.assertRaises(TypeError):
+            s1.x = {1}
+        with self.assertRaises(TypeError):
+            s1.y = {5}
+        with self.assertRaises(TypeError):
+            s1.x = True
+        with self.assertRaises(TypeError):
+            s1.y = True
+        with self.assertRaises(TypeError):
+            s1.x = 5.2
+        with self.assertRaises(TypeError):
+            s1.y = 3.1
+
+
 
 if __name__ == '__main__':
     unittest.main()
