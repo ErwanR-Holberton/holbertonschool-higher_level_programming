@@ -89,12 +89,40 @@ class TestInit(unittest.TestCase):
             r5 = Rectangle(True, 5)
         with self.assertRaises(TypeError):
             r5 = Rectangle(5, True)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, "1")
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, {1})
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, [1])
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, (1, 1))
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 0.1)
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(5, 1, -5)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, True)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 1, "1")
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 1, {1})
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 1, [1])
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 1, (1, 1))
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 1, 0.1)
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(5, 1, 1, -5)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, 1, 1, True)
 
     def test_square_initialization_id(self):
         with self.assertRaises(TypeError):
             s1 = Square()
         s1 = Square(3)
-        self.assertEqual(s1.id, 22)
+        self.assertEqual(s1.id, 36)
         self.assertEqual(s1.size, 3)
         s2 = Square(3, 1, 5, 50)
         self.assertEqual(s2.x, 1)
