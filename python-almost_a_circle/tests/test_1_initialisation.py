@@ -8,6 +8,14 @@ from models.square import Square
 
 
 class TestInit(unittest.TestCase):
+    def test_classes(self):
+        self.assertTrue(issubclass(Square, Base))
+        self.assertTrue(issubclass(Rectangle, Base))
+        self.assertTrue(issubclass(Square, Rectangle))
+        self.assertFalse(issubclass(Rectangle, Square))
+        self.assertFalse(issubclass(Base, Rectangle))
+        self.assertFalse(issubclass(Base, Square))
+
     def test_base_initialization_id(self):
         b1 = Base()
         self.assertEqual(b1.id, 1)
@@ -48,7 +56,7 @@ class TestInit(unittest.TestCase):
         self.assertEqual(r5.y, 4)
 
         with self.assertRaises(ValueError):
-            r5 = Rectangle(0, 0)
+            r5 = Rectangle(0, 1)
         with self.assertRaises(ValueError):
             r5 = Rectangle(5, -5)
         with self.assertRaises(TypeError):
@@ -59,12 +67,24 @@ class TestInit(unittest.TestCase):
             r5 = Rectangle(5, {-5})
         with self.assertRaises(TypeError):
             r5 = Rectangle(5, (5, ))
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(1, 0)
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(5, -5)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle("5", 1)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle([-5], 1)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle({-5}, 1)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle((5, ), 1)
 
     def test_square_initialization_id(self):
         with self.assertRaises(TypeError):
             s1 = Square()
         s1 = Square(3)
-        self.assertEqual(s1.id, 13)
+        self.assertEqual(s1.id, 19)
         self.assertEqual(s1.size, 3)
         s2 = Square(3, 1, 5, 50)
         self.assertEqual(s2.x, 1)
