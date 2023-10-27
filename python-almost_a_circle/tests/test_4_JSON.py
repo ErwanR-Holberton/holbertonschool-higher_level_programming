@@ -26,6 +26,10 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(s1.to_json_string(s1.to_dictionary()), str_s)
         self.assertEqual(type(r1.to_json_string(r1.to_dictionary())), str)
         self.assertEqual(type(s1.to_json_string(s1.to_dictionary())), str)
+        self.assertEqual(r1.to_json_string(None), "[]")
+        self.assertEqual(s1.to_json_string(None), "[]")
+        self.assertEqual(r1.to_json_string([]), "[]")
+        self.assertEqual(s1.to_json_string([]), "[]")
 
 
 
