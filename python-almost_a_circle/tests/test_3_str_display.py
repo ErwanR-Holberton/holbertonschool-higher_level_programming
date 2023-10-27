@@ -53,6 +53,30 @@ class TestStrDisplay(unittest.TestCase):
         self.assertEqual(s2.x, 1)
         self.assertEqual(s2.y, 2)
 
+        r3 = Rectangle(2, 2, 0, 0, "22")
+        self.assertEqual(r3.id, "22")
+        r3.update(x=1, id="52", height=3, width=3, y=2)
+        self.assertEqual(r3.id, "52")
+
+        with self.assertRaises(TypeError):
+            r3.update(x=1, id="52", height="3", width=3, y=2)
+        with self.assertRaises(TypeError):
+            r3.update(x="1", id="52", height=3, width=3, y=2)
+        with self.assertRaises(TypeError):
+            r3.update(x=1, id="52", height=3, width="3", y=2)
+        with self.assertRaises(TypeError):
+            r3.update(x=1, id="52", height=3, width=3, y="2")
+        with self.assertRaises(ValueError):
+            r3.update(x=1, id="52", height=3, width=3, y=-1)
+        with self.assertRaises(ValueError):
+            r3.update(x=-1, id="52", height=3, width=3, y=2)
+        with self.assertRaises(ValueError):
+            r3.update(x=1, id="52", height=-3, width=3, y=0)
+        with self.assertRaises(ValueError):
+            r3.update(x=1, id="52", height=3, width=-3, y=0)
+
+        #s3 = Square("2", "0", "0", "23")
+
 
 
 if __name__ == '__main__':

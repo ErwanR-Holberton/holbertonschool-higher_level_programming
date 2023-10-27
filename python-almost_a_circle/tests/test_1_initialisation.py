@@ -21,14 +21,16 @@ class TestInit(unittest.TestCase):
         self.assertEqual(b1.id, 1)
         b2 = Base()
         self.assertEqual(b2.id, 2)
-        b3 = Base()
-        self.assertEqual(b3.id, 3)
+        b3 = Base(1.2)
+        self.assertEqual(b3.id, 1.2)
         b4 = Base(12)
         self.assertEqual(b4.id, 12)
         b5 = Base()
-        self.assertEqual(b5.id, 4)
+        self.assertEqual(b5.id, 3)
         b6 = Base(-5)
         self.assertEqual(b6.id, -5)
+        b7 = Base("-5")
+        self.assertEqual(b7.id, "-5")
 
     def test_rectangle_initialization_id(self):
         with self.assertRaises(TypeError):
@@ -36,14 +38,14 @@ class TestInit(unittest.TestCase):
         with self.assertRaises(TypeError):
             r2 = Rectangle(1)
         r3 = Rectangle(2, 5)
-        self.assertEqual(r3.id, 5)
+        self.assertEqual(r3.id, 4)
         self.assertEqual(r3.width, 2)
         self.assertEqual(r3.height, 5)
         self.assertEqual(r3.x, 0)
         self.assertEqual(r3.y, 0)
 
         r4 = Rectangle(3, 6, 1)
-        self.assertEqual(r4.id, 6)
+        self.assertEqual(r4.id, 5)
         self.assertEqual(r4.width, 3)
         self.assertEqual(r4.height, 6)
         self.assertEqual(r4.x, 1)
@@ -79,12 +81,16 @@ class TestInit(unittest.TestCase):
             r5 = Rectangle({-5}, 1)
         with self.assertRaises(TypeError):
             r5 = Rectangle((5, ), 1)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(0.2, 1)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(1, 0.2)
 
     def test_square_initialization_id(self):
         with self.assertRaises(TypeError):
             s1 = Square()
         s1 = Square(3)
-        self.assertEqual(s1.id, 19)
+        self.assertEqual(s1.id, 20)
         self.assertEqual(s1.size, 3)
         s2 = Square(3, 1, 5, 50)
         self.assertEqual(s2.x, 1)
@@ -102,6 +108,8 @@ class TestInit(unittest.TestCase):
             s5 = Square(0)
         with self.assertRaises(ValueError):
             s5 = Square(-5)
+        with self.assertRaises(TypeError):
+            s5 = Square(0.2)
 
 
 if __name__ == '__main__':
