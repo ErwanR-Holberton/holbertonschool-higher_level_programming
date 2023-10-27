@@ -14,6 +14,8 @@ class TestJSON(unittest.TestCase):
         s1 = Square(1, 2, 3, 4)
         self.assertEqual(r1.to_dictionary(), {'id': 5, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
         self.assertEqual(s1.to_dictionary(), {'id': 4, 'size': 1, 'x': 2, 'y': 3})
+        self.assertEqual(dict, type(r1.to_dictionary()))
+        self.assertEqual(dict, type(s1.to_dictionary()))
 
     def test_JSON_string(self):
         r1 = Rectangle(1, 2, 3, 4, 5)
@@ -22,8 +24,8 @@ class TestJSON(unittest.TestCase):
         str_s = "{\"id\": 4, \"size\": 1, \"x\": 2, \"y\": 3}"
         self.assertEqual(r1.to_json_string(r1.to_dictionary()), str_r)
         self.assertEqual(s1.to_json_string(s1.to_dictionary()), str_s)
-        self.assertEqual(dict, type(r1.to_dictionary()))
-        self.assertEqual(dict, type(s1.to_dictionary()))
+        self.assertEqual(type(r1.to_json_string(r1.to_dictionary())), str)
+        self.assertEqual(type(s1.to_json_string(s1.to_dictionary())), str)
 
 
 
@@ -41,6 +43,18 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(Square.load_from_file()[0].y, s1.y)
         self.assertEqual(Square.load_from_file()[0].size, s1.size)
         self.assertEqual(Square.load_from_file()[0].id, s1.id)
+
+        Rectangle.save_to_file(None)
+        self.assertEqual(Rectangle.load_from_file(), [])
+        Square.save_to_file(None)
+        self.assertEqual(Square.load_from_file(), [])
+        Rectangle.save_to_file([])
+        self.assertEqual(Rectangle.load_from_file(), [])
+        Square.save_to_file([])
+        self.assertEqual(Square.load_from_file(), [])
+        self.assertEqual(type(Rectangle.load_from_file()), list)
+        self.assertEqual(type(Square.load_from_file()), list)
+
         with self.assertRaises(AttributeError):
             Rectangle.save_to_file("a")
         with self.assertRaises(TypeError):
