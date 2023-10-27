@@ -3,6 +3,7 @@
 """
 import unittest
 import json
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -71,6 +72,17 @@ class TestJSON(unittest.TestCase):
         with open("Square.json", "r") as f:
             self.assertEqual("[]", f.read())
             self.assertEqual(str, type(f.read()))
+
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
+        try:
+            os.remove("Square.json")
+        except:
+            pass
+        self.assertEqual(Rectangle.load_from_file(), [])
+        self.assertEqual(Square.load_from_file(), [])
 
 
     def test_create(self):
