@@ -82,19 +82,32 @@ class TestJSON(unittest.TestCase):
         j_string_s = Square.to_json_string(list_s)
         self.assertEqual(j_string_r, expected_r)
         self.assertEqual(j_string_s, expected_s)
-
-
+        self.assertEqual(type(j_string_r), str)
+        self.assertEqual(type(j_string_s), str)
 
     def test_JSON2(self):
+        r1 = Rectangle(1, 2, 3, 4, 5)
         s1 = Square(5, 4, 3, 202)
-        dict = s1.to_dictionary()
-        j_string = Base.to_json_string([dict])
-        self.assertEqual(type(j_string), str)
-        self.assertEqual(json.loads(j_string), [{"id": 202, "size": 5, "y": 3, "x": 4}])
-        j_string = Base.to_json_string(None)
-        self.assertEqual(j_string, "[]")
-        j_string = Base.to_json_string([])
-        self.assertEqual(j_string, "[]")
+        dict_r = r1.to_dictionary()
+        dict_s = s1.to_dictionary()
+        j_string_r = Base.to_json_string([dict_r])
+        j_string_s = Base.to_json_string([dict_s])
+        self.assertEqual(type(j_string_r), str)
+        self.assertEqual(type(j_string_s), str)
+        self.assertEqual(json.loads(j_string_r), [{"id": 5, "width": 1, "height": 2, "y": 4, "x": 3}])
+        self.assertEqual(json.loads(j_string_s), [{"id": 202, "size": 5, "y": 3, "x": 4}])
+        j_string_r = Base.to_json_string(None)
+        self.assertEqual(j_string_r, "[]")
+        j_string_r = Base.to_json_string([])
+        self.assertEqual(j_string_r, "[]")
+        j_string_r = Rectangle.to_json_string(None)
+        self.assertEqual(j_string_r, "[]")
+        j_string_r = Rectangle.to_json_string([])
+        self.assertEqual(j_string_r, "[]")
+        j_string_r = Square.to_json_string(None)
+        self.assertEqual(j_string_r, "[]")
+        j_string_r = Square.to_json_string([])
+        self.assertEqual(j_string_r, "[]")
 
 
 
