@@ -35,6 +35,24 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(Square.load_from_file()[0].size, s1.size)
         self.assertEqual(Square.load_from_file()[0].id, s1.id)
 
+    def test_create(self):
+        r1 = Rectangle(1, 2, 3, 4, 5)
+        s1 = Square(1, 2, 3, 4)
+        dict_r = r1.to_dictionary()
+        dict_s = s1.to_dictionary()
+        r2 = Rectangle.create(**dict_r)
+        s2 = Square.create(**dict_s)
+        self.assertEqual(r1.id, r2.id)
+        self.assertEqual(r1.height, r2.height)
+        self.assertEqual(r1.width, r2.width)
+        self.assertEqual(r1.x, r2.x)
+        self.assertEqual(r1.y, r2.y)
+        self.assertEqual(r2.id, r2.id)
+        self.assertEqual(r2.height, r2.height)
+        self.assertEqual(r2.width, r2.width)
+        self.assertEqual(r2.x, r2.x)
+        self.assertEqual(r2.y, r2.y)
+
 
 
 if __name__ == '__main__':
