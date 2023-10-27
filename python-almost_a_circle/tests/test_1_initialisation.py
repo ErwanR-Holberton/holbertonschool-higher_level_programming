@@ -60,6 +60,8 @@ class TestInit(unittest.TestCase):
         with self.assertRaises(ValueError):
             r5 = Rectangle(0, 1)
         with self.assertRaises(ValueError):
+            r5 = Rectangle(1, 0)
+        with self.assertRaises(ValueError):
             r5 = Rectangle(5, -5)
         with self.assertRaises(TypeError):
             r5 = Rectangle(5, "-5")
@@ -122,7 +124,7 @@ class TestInit(unittest.TestCase):
         with self.assertRaises(TypeError):
             s1 = Square()
         s1 = Square(3)
-        self.assertEqual(s1.id, 36)
+        self.assertEqual(s1.id, 37)
         self.assertEqual(s1.size, 3)
         s2 = Square(3, 1, 5, 50)
         self.assertEqual(s2.x, 1)
@@ -144,6 +146,34 @@ class TestInit(unittest.TestCase):
             s5 = Square(0.2)
         with self.assertRaises(TypeError):
             s5 = Square(True)
+        with self.assertRaises(TypeError):
+            s5 = Square(1, "1")
+        with self.assertRaises(ValueError):
+            s5 = Square(1, -5)
+        with self.assertRaises(TypeError):
+            s5 = Square(1, [1])
+        with self.assertRaises(TypeError):
+            s5 = Square(1, {1})
+        with self.assertRaises(TypeError):
+            s5 = Square(1, (1, 1))
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 0.2)
+        with self.assertRaises(TypeError):
+            s5 = Square(1, True)
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 1, "1")
+        with self.assertRaises(ValueError):
+            s5 = Square(1, 1, -5)
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 1, [1])
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 1, {1})
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 1, (1, 1))
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 1, 0.2)
+        with self.assertRaises(TypeError):
+            s5 = Square(1, 1, True)
 
 
 if __name__ == '__main__':
