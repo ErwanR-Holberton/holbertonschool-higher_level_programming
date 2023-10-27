@@ -85,12 +85,16 @@ class TestInit(unittest.TestCase):
             r5 = Rectangle(0.2, 1)
         with self.assertRaises(TypeError):
             r5 = Rectangle(1, 0.2)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(True, 5)
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(5, True)
 
     def test_square_initialization_id(self):
         with self.assertRaises(TypeError):
             s1 = Square()
         s1 = Square(3)
-        self.assertEqual(s1.id, 20)
+        self.assertEqual(s1.id, 22)
         self.assertEqual(s1.size, 3)
         s2 = Square(3, 1, 5, 50)
         self.assertEqual(s2.x, 1)
@@ -110,6 +114,8 @@ class TestInit(unittest.TestCase):
             s5 = Square(-5)
         with self.assertRaises(TypeError):
             s5 = Square(0.2)
+        with self.assertRaises(TypeError):
+            s5 = Square(True)
 
 
 if __name__ == '__main__':

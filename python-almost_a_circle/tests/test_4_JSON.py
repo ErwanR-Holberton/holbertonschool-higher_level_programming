@@ -2,6 +2,7 @@
 """Unittest for class Base
 """
 import unittest
+import json
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -61,6 +62,18 @@ class TestJSON(unittest.TestCase):
         expected = '[{"id": 89, "width": 10, "height": 4}, {"id": 7, "width": 1, "height": 7}]'
         json_list_input = Rectangle.to_json_string(list_input)
         self.assertEqual(json_list_input, expected)
+
+
+    def test_JSON2(self):
+        s1 = Square(5, 4, 3, 202)
+        dict = s1.to_dictionary()
+        j_string = Base.to_json_string([dict])
+        self.assertEqual(type(j_string), str)
+        self.assertEqual(json.loads(j_string), [{"id": 202, "size": 5, "y": 3, "x": 4}])
+        j_string = Base.to_json_string(None)
+        self.assertEqual(j_string, "[]")
+        j_string = Base.to_json_string([])
+        self.assertEqual(j_string, "[]")
 
 
 
