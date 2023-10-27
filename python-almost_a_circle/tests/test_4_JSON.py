@@ -18,8 +18,14 @@ class TestJSON(unittest.TestCase):
     def test_JSON_string(self):
         r1 = Rectangle(1, 2, 3, 4, 5)
         s1 = Square(1, 2, 3, 4)
-        self.assertEqual(r1.to_json_string(r1.to_dictionary()), "{\"id\": 5, \"width\": 1, \"height\": 2, \"x\": 3, \"y\": 4}")
-        self.assertEqual(s1.to_json_string(s1.to_dictionary()), "{\"id\": 4, \"size\": 1, \"x\": 2, \"y\": 3}")
+        str_r = "{\"id\": 5, \"width\": 1, \"height\": 2, \"x\": 3, \"y\": 4}"
+        str_s = "{\"id\": 4, \"size\": 1, \"x\": 2, \"y\": 3}"
+        self.assertEqual(r1.to_json_string(r1.to_dictionary()), str_r)
+        self.assertEqual(s1.to_json_string(s1.to_dictionary()), str_s)
+        self.assertEqual(dict, type(r1.to_dictionary()))
+        self.assertEqual(dict, type(s1.to_dictionary()))
+
+
 
     def test_save_JSON(self):
         r1 = Rectangle(1, 2, 3, 4, 5)
@@ -35,6 +41,19 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(Square.load_from_file()[0].y, s1.y)
         self.assertEqual(Square.load_from_file()[0].size, s1.size)
         self.assertEqual(Square.load_from_file()[0].id, s1.id)
+        with self.assertRaises(AttributeError):
+            Rectangle.save_to_file("a")
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file(5)
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual("[]", f.read())
+            self.assertEqual(str, type(f.read()))
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
+            self.assertEqual(str, type(f.read()))
+
 
     def test_create(self):
         r1 = Rectangle(1, 2, 3, 4, 5)
@@ -55,13 +74,15 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(r2.y, r2.y)
 
     def test_fromJSON(self):
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        expected = '[{"id": 89, "width": 10, "height": 4}, {"id": 7, "width": 1, "height": 7}]'
-        json_list_input = Rectangle.to_json_string(list_input)
-        self.assertEqual(json_list_input, expected)
+        list_r = [{'id': 125, 'width': 5, 'height': 4}, {'id': 126, 'width': 3, 'height': 20}]
+        list_s = [{'id': 128, 'size': 5}, {'id': 129, 'size': 3}]
+        expected_r = '[{"id": 125, "width": 5, "height": 4}, {"id": 126, "width": 3, "height": 20}]'
+        expected_s = '[{"id": 128, "size": 5}, {"id": 129, "size": 3}]'
+        j_string_r = Rectangle.to_json_string(list_r)
+        j_string_s = Square.to_json_string(list_s)
+        self.assertEqual(j_string_r, expected_r)
+        self.assertEqual(j_string_s, expected_s)
+
 
 
     def test_JSON2(self):
@@ -74,6 +95,7 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(j_string, "[]")
         j_string = Base.to_json_string([])
         self.assertEqual(j_string, "[]")
+
 
 
 
