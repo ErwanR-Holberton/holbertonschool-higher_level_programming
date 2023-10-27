@@ -53,6 +53,15 @@ class TestJSON(unittest.TestCase):
         self.assertEqual(r2.x, r2.x)
         self.assertEqual(r2.y, r2.y)
 
+    def test_fromJSON(self):
+        list_input = [
+            {'id': 89, 'width': 10, 'height': 4},
+            {'id': 7, 'width': 1, 'height': 7}
+        ]
+        expected = '[{"id": 89, "width": 10, "height": 4}, {"id": 7, "width": 1, "height": 7}]'
+        json_list_input = Rectangle.to_json_string(list_input)
+        self.assertEqual(json_list_input, expected)
+
 
 
 if __name__ == '__main__':
