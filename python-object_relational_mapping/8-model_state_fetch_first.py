@@ -12,7 +12,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
 
-    for state in Session().query(State).order_by(State.id).all():
-        if state.id == 1:
-            print("{}: {}".format(state.id, state.name))
+    State_obj = Session().query(State).order_by(State.id).first()
+    if State_obj is None:
+        print("Nothing")
+    else:
+        print("{}: {}".format(State_obj.id, State_obj.name))
     Session().close()
