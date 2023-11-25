@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Request all states from database"""
 import MySQLdb
 from sys import argv
 
